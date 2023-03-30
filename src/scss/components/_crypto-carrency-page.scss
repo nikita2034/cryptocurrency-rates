@@ -1,0 +1,86 @@
+// @import 'variables';
+
+.crupto-currency {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80%;
+  overflow: auto;
+  margin-left: 100px;
+  &__block_left{
+    display: flex;
+    flex-direction: column;
+  }
+  &__block_right{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  &__addition_menu{
+    display: flex;
+    flex-direction: column;
+    
+    width: 250px;
+    height: 150px;
+    background-color:rgb(55, 129, 220);
+    border-radius:20px;
+  }
+  input{
+    background-color:rgba(229,229,229);
+    border:1px solid rgba(229,229,229,0.2);
+    align-self: center;
+    border-radius: 10px;
+    width: 200px;
+    height: 40px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: center;
+  }
+  button{  
+    background-color:rgba(229,229,229);
+    border:1px solid rgba(229,229,229,0.2);
+    align-self: center;
+    border-radius: 10px;
+    width: 120px;
+    height: 40px;
+    margin-bottom: 30px;
+    &:hover{
+      background-color: darken(rgb(55, 129, 220), 10%);
+    }
+  }
+  img{
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  @media (max-width: 768px) {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+
+  // ul {
+  //   display: flex;
+
+  //   li {
+  //     background-color: #f9f9f9;
+  //     padding: 13px 30px;
+  //     border-radius: 30px;
+  //     margin-right: 10px;
+  //     font-weight: bold;
+  //     cursor: pointer;
+  //     transition: background-color 0.1s ease-in-out;
+  //     @include noselect();
+
+  //     &:hover {
+  //       background-color: darken(#f9f9f9, 2%);
+  //     }
+
+  //     &:active {
+  //       background-color: darken(#f9f9f9, 5%);
+  //     }
+
+  //     &.active {
+  //       background-color: #282828;
+  //       color: #fff;
+  //     }
+  //   }
+  // }
+}
