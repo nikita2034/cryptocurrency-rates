@@ -1,51 +1,69 @@
-import React,{useState,useContext} from "react"
+import React,{useState,useContext,useEffect} from "react"
 import { ItemContext } from "../App";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-router-dom"
 import {BsBriefcase} from 'react-icons/bs';
+import {MdClear} from 'react-icons/md';
 import {AiOutlineCloseCircle} from 'react-icons/ai';
 function Header() {
-  const {portfolioOfCurrencies}=useContext(ItemContext);
+  const {portfolioOfCurrencies,popularСurrencies}=useContext(ItemContext);
+  const [portfolioValue, setPortfolioValue] = useState<number>(0);
+  const [currencyPortfolio, setCurrencyPortfolio] = useState<[]>([]);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  let currencyPortfolio=portfolioOfCurrencies.map((item)=>{
-    console.log(item);
+
+  useEffect(()=>{
+    portfolioOfCurrencies.forEach(item=> {
+      setPortfolioValue((item.price*item.AmountOfCurrency)+portfolioValue);
+    });
+    setCurrencyPortfolio(portfolioOfCurrencies.map((item,index)=>{
+      return(
+      <li key={index} className="header__list"><div>{item.name}</div><div>{item.AmountOfCurrency}</div><div>${item.price.slice(0,item.price.indexOf('.')+3)}</div><div><MdClear/></div></li>
+    )}))
+  },[portfolioOfCurrencies])
+
+
+  
+
+  let threePopularCurrencies=popularСurrencies.map((item)=>{
     return(
-    <li className="header__list"><div>{item.name}</div><div>{item.price}</div><div>{item.AmountOfCurrency}</div></li>
+    <div className="header__popular_cryptocurrencies">
+      <div className="header__name_cryptocurrency">{item.name}</div>
+      <div className="header__price_cryptocurrency">${item.priceUsd.slice(0,item.priceUsd.indexOf('.')+3)}</div>
+    </div>
   )})
+
+
     return (<div className="header">
       <div className="container">
       <Modal show={show} onHide={handleClose} className="header__modal">
-          <Modal.Title className="header__title">Cryptocurrency Portfolio</Modal.Title>
+        <div className="header__modal-header">
+          
+            <Modal.Title className="header__title">Cryptocurrency Portfolio</Modal.Title>
+             <AiOutlineCloseCircle className="header__icon" onClick={handleClose}/>
+        </div>
           <ul >
              {currencyPortfolio}
           </ul>
-     
-            <AiOutlineCloseCircle className="header__button" onClick={handleClose}/>
-
       </Modal>
         <Link to='/'>
         <div className="header__logo">
-          <img width="58" src="./img/icon.png" alt="Pizza logo" />
+          <img className="header__logo__img" width="60" src="./img/wallet.png" alt="Pizza logo" />
           <div>
-            <h1>Cryptocurrencies</h1>
+            <h1 className="header__logo__h1">Cryptocurrencies</h1>
           </div>
-          <div className="header__popular_cryptocurrencies">
-          <div className="header__name_cryptocurrency">Bitcoin</div>
-          <div className="header__price_cryptocurrency">234234$</div>
-          </div>
+          {threePopularCurrencies}
         </div>
         </Link>
         <div className="header__cart">
-          <Button className="button button--cart" variant="primary" onClick={handleShow}>
-            <span> 1213123₽ +23%</span>
+          <button className="button button--cart" variant="primary" onClick={handleShow}>
+            <span> ${String(portfolioValue).slice(0,String(portfolioValue).indexOf('.')+3)}</span>
             <div className="button__delimiter"></div>
             <BsBriefcase className="button__icon"/>
-
-          </Button>
+          </button>
         </div>
       </div> 
      

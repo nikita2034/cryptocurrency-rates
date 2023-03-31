@@ -11,11 +11,12 @@ import { createContext } from 'react';
 
 function App() {
   const [item,setItem]=useState<object>({});
-  const [portfolioOfCurrencies,setPortfolioOfCurrencies]=useState<[]>([]);
+  const [portfolioOfCurrencies,setPortfolioOfCurrencies]=useState<object[]>([]);
+  const [popularСurrencies,setPopularСurrencies]=useState<object[]>([]);
 
   return (
     <div className="wrapper">
-      <ItemContext.Provider value={{item,setItem,portfolioOfCurrencies,setPortfolioOfCurrencies}}>
+      <ItemContext.Provider value={{item,setItem,portfolioOfCurrencies,setPortfolioOfCurrencies,popularСurrencies,setPopularСurrencies}}>
         <Header/>
         <div >
           <Routes>

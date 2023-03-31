@@ -9,11 +9,11 @@ function Pagination({currentPage , onChangePage}){
         className={styles.root}
           breakLabel="..."
           nextLabel=">"
-          onPageChange={(event)=>onChangePage(event.selected+10)}
+          onPageChange={(event)=>onChangePage(event.selected+1)}
           pageRangeDisplayed={10}
           pageCount={10}
           previousLabel="<"
-          forcePage={currentPage-10}
+          forcePage={currentPage-1}
           renderOnZeroPageCount={null}
         />
     )
