@@ -2,18 +2,19 @@
 
 .crupto-currency {
   display: flex;
-  justify-content: space-between;
-  max-width: 80%;
+  justify-content: space-around;
+  width: 100%;
   overflow: auto;
-  margin-left: 100px;
   &__block_left{
     display: flex;
     flex-direction: column;
+    margin-left: 20px;
   }
   &__block_right{
     display: flex;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 130px;
+    // margin-right: 140px;
   }
   &__addition_menu{
     display: flex;
@@ -23,11 +24,65 @@
     height: 220px;
     background-color:rgb(55, 129, 220);
     border-radius:20px;
+    &__button{  
+      background-color:rgb(235,235,235);
+      border:none;
+      border-radius:10px;
+      align-self: center;
+      width: 130px;
+      height: 30px;
+      margin-top: 20px;
+      margin-left: 13px;
+      &:hover{
+       background-color: darken(rgb(55, 129, 220), 10%);
+      }
+    }
+  }
+  &__title{
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: -2px;
+    margin-left: 10px;
+  }
+  &__date{
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+    margin-top: 25px;
+    margin-bottom: 15px;
   }
   &__header{
     font-size: 19px;
     text-align: center;
     margin-top: 15px;
+  }
+  &__banner{
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 55px;
+    margin-top: 5px;
+  }
+  &__icon{
+    width: 70px;
+    height: 70px;
+    color:rgb(20,80,155);
+    &__rank{
+      font-size: 22px;
+      font-weight:700;
+      margin-top: -63px;
+      margin-left: 28px;
+      color:rgb(20,80,155);
+    }
+    &__title{
+      font-size: 18px;
+      margin-top: 20px;
+      margin-left: 16.5px;
+    }
+  }
+
+  &__headlines{
+    display: flex;
+    flex-direction: row;
   }
   &__input{
     background-color:rgba(229,229,229);
@@ -41,13 +96,15 @@
     text-align: center;
   }
   &__button{  
-    background-color:rgba(229,229,229);
+    background-color:rgb(55, 129, 220);
+    color:white;
     border:none;
     border-radius:10px;
     align-self: center;
     width: 130px;
     height: 30px;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 13px;
     &:hover{
      background-color: darken(rgb(55, 129, 220), 10%);
     }

@@ -7,7 +7,7 @@ import {BsBriefcase} from 'react-icons/bs';
 import {MdClear} from 'react-icons/md';
 import {AiOutlineCloseCircle} from 'react-icons/ai';
 function Header() {
-  const {portfolioOfCurrencies,popularСurrencies}=useContext(ItemContext);
+  const {portfolioOfCurrencies,popularСurrencies,setPortfolioOfCurrencies}=useContext(ItemContext);
   const [portfolioValue, setPortfolioValue] = useState<number>(0);
   const [currencyPortfolio, setCurrencyPortfolio] = useState<[]>([]);
   const [show, setShow] = useState(false);
@@ -16,16 +16,31 @@ function Header() {
   const handleShow = () => setShow(true);
 
   useEffect(()=>{
-    portfolioOfCurrencies.forEach(item=> {
-      setPortfolioValue((item.price*item.AmountOfCurrency)+portfolioValue);
-    });
-    setCurrencyPortfolio(portfolioOfCurrencies.map((item,index)=>{
-      return(
-      <li key={index} className="header__list"><div>{item.name}</div><div>{item.AmountOfCurrency}</div><div>${item.price.slice(0,item.price.indexOf('.')+3)}</div><div><MdClear/></div></li>
-    )}))
+    portfolioСompilation();
+    portfolioValueCalculation();
+    // localStorage.setItem('portfolio', portfolioOfCurrencies);
   },[portfolioOfCurrencies])
 
+  function portfolioСompilation(){
+    setCurrencyPortfolio(portfolioOfCurrencies.map((item,index)=>{
+      return(
+      <li key={index} className="header__list"><div>{item.name}</div><div>{item.AmountOfCurrency}</div><div>${item.price.slice(0,item.price.indexOf('.')+3)}</div><div><MdClear className="header__icon" onClick={()=>onDeleteCurrency(index)}/></div></li>
+    )}))
+  }
 
+  function portfolioValueCalculation(){
+    console.log(portfolioOfCurrencies);
+    setPortfolioValue(0);
+    let summa=0;
+    portfolioOfCurrencies.forEach(item=> {
+      summa+=item.price*item.AmountOfCurrency;
+      setPortfolioValue(summa);
+    });
+  }
+
+  function onDeleteCurrency(index){  
+    setPortfolioOfCurrencies([...portfolioOfCurrencies.slice(0,index),...portfolioOfCurrencies.slice(index+1,portfolioOfCurrencies.lenght)]);
+  }
   
 
   let threePopularCurrencies=popularСurrencies.map((item)=>{
@@ -43,8 +58,10 @@ function Header() {
         <div className="header__modal-header">
           
             <Modal.Title className="header__title">Cryptocurrency Portfolio</Modal.Title>
+          
              <AiOutlineCloseCircle className="header__icon" onClick={handleClose}/>
         </div>
+        <div className="header__headlines"><div>currency</div><div>quantity</div><div>purchase price</div><div>price now</div><div>purchase costs</div><div>cost now</div><div></div></div>
           <ul >
              {currencyPortfolio}
           </ul>
