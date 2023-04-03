@@ -56,7 +56,7 @@ function CryptoCurrency({
       ]);
       let data:object[] = JSON.parse(localStorage.getItem("portfolio"));
       console.log(data);
-      let array = [];
+      let array:[] = [];
       array = [...data, { name, price, AmountOfCurrency }];
       localStorage.setItem("portfolio", JSON.stringify(array));
     }

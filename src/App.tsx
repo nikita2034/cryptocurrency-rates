@@ -13,8 +13,8 @@ interface Idata {
   portfolioOfCurrencies: object[];
   popularСurrencies: object[];
   setPopularСurrencies: ([]) =>void;
-  setPortfolioOfCurrencies: ([]) =>void;
-  lineAdjustment:(str):string => string;
+  setPortfolioOfCurrencies: ([]) =>[];
+  lineAdjustment:({string}) => string;
   API_URl:string;
 }
 
