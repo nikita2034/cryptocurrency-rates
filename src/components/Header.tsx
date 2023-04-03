@@ -14,31 +14,50 @@ function Header() {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  let portfolio=[];
   useEffect(()=>{
     portfolioСompilation();
-    portfolioValueCalculation();
-    // localStorage.setItem('portfolio', portfolioOfCurrencies);
   },[portfolioOfCurrencies])
 
   function portfolioСompilation(){
-    setCurrencyPortfolio(portfolioOfCurrencies.map((item,index)=>{
+    portfolio=JSON.parse(localStorage.getItem("portfolio"));
+    console.log(portfolio);
+    if(portfolio!==null){
+       setCurrencyPortfolio(portfolio.map((item,index)=>{
       return(
       <li key={index} className="header__list"><div>{item.name}</div><div>{item.AmountOfCurrency}</div><div>${item.price.slice(0,item.price.indexOf('.')+3)}</div><div><MdClear className="header__icon" onClick={()=>onDeleteCurrency(index)}/></div></li>
     )}))
+    portfolioValueCalculation();
+    }
   }
 
   function portfolioValueCalculation(){
     console.log(portfolioOfCurrencies);
     setPortfolioValue(0);
     let summa=0;
-    portfolioOfCurrencies.forEach(item=> {
+    portfolio.forEach(item=> {
       summa+=item.price*item.AmountOfCurrency;
       setPortfolioValue(summa);
     });
   }
 
   function onDeleteCurrency(index){  
+    // if (AmountOfCurrency !== 0) {
+      // setPortfolioOfCurrencies([
+      //   ...portfolioOfCurrencies,
+      //   { name, price, AmountOfCurrency },
+      // ]);
+      // let data = JSON.parse(localStorage.getItem("portfolio"));
+      console.log('delete');
+      // console.log(data);
+      let array = [];
+      array = [...portfolioOfCurrencies.slice(0,index),...portfolioOfCurrencies.slice(index+1,portfolioOfCurrencies.lenght)];
+      console.log(array);
+      localStorage.setItem("portfolio", JSON.stringify(array));
+    // }
+
+
+
     setPortfolioOfCurrencies([...portfolioOfCurrencies.slice(0,index),...portfolioOfCurrencies.slice(index+1,portfolioOfCurrencies.lenght)]);
   }
   
