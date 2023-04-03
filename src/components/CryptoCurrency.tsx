@@ -21,7 +21,6 @@ function CryptoCurrency({
   changePercent24Hr: string;
 }) {
   const {
-    // setItem,
     portfolioOfCurrencies,
     setPortfolioOfCurrencies,
     lineAdjustment,
@@ -55,7 +54,7 @@ function CryptoCurrency({
         ...portfolioOfCurrencies,
         { name, price, AmountOfCurrency },
       ]);
-      let data = JSON.parse(localStorage.getItem("portfolio"));
+      let data:[] = JSON.parse(localStorage.getItem("portfolio"));
       console.log(data);
       let array = [];
       array = [...data, { name, price, AmountOfCurrency }];
