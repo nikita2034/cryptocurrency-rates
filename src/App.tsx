@@ -9,12 +9,12 @@ import { createContext } from "react";
 
 interface Idata {
   item: object;
-  setItem: ({}) => object;
+  setItem: ({}) => void;
   portfolioOfCurrencies: object[];
   popularСurrencies: object[];
-  setPopularСurrencies: ([]) =>[];
-  setPortfolioOfCurrencies: ([]) =>[];
-  lineAdjustment: (string) => string;
+  setPopularСurrencies: ([]) =>void;
+  setPortfolioOfCurrencies: ([]) =>void;
+  lineAdjustment:(str):string => string;
   API_URl:string;
 }
 

@@ -54,7 +54,7 @@ function CryptoCurrency({
         ...portfolioOfCurrencies,
         { name, price, AmountOfCurrency },
       ]);
-      let data:[] = JSON.parse(localStorage.getItem("portfolio"));
+      let data:object[] = JSON.parse(localStorage.getItem("portfolio"));
       console.log(data);
       let array = [];
       array = [...data, { name, price, AmountOfCurrency }];
