@@ -9,19 +9,19 @@ import { createContext } from "react";
 
 interface Idata {
   item: object;
-  setItem: () => void;
+  setItem: (object) => void;
   portfolioOfCurrencies: object[];
   popularСurrencies: object[];
   setPopularСurrencies: () => void;
-  setPortfolioOfCurrencies: () => void;
-  lineAdjustment: () => string;
+  setPortfolioOfCurrencies: ([]) => void;
+  lineAdjustment: (string) => string;
 }
 
-export const ItemContext = createContext<Idata>();
+export const ItemContext = createContext<Idata>({});
 
 function App() {
-  const [item, setItem] = useState<object>({});
-  const [portfolioOfCurrencies, setPortfolioOfCurrencies] = useState<any[]>([]);
+  const [item, setItem] = useState({});
+  const [portfolioOfCurrencies, setPortfolioOfCurrencies] = useState<object[]>([]);
   const [popularСurrencies, setPopularСurrencies] = useState<object[]>([]);
   const API_URl = "https://api.coincap.io/v2/assets";
 

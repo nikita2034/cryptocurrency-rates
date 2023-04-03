@@ -8,7 +8,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { VscDiffAdded } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
-type Props = {item:object,name:string,price:string,marketCap:string,suppl:string,volumeUsd:string,changePercent:string,show:boolean,AmountOfCurrency:number,handleShow:()=>void,handleClose:()=>void,onClickButton:()=>void,setAmountOfCurrency:()=>void}
+type Props = {item:object,name:string,price:string,marketCap:string,suppl:string,volumeUsd:string,changePercent:string,show:boolean,AmountOfCurrency:number,handleShow:()=>void,handleClose:()=>void,onClickButton:()=>void,setAmountOfCurrency:(number)=>void}
 
 function CryptoCurrencyBlock({item,name,price,marketCap,suppl,volumeUsd,changePercent,show,handleShow,handleClose,onClickButton,setAmountOfCurrency,AmountOfCurrency}:Props){
     const {
