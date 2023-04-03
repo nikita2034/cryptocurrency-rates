@@ -14,7 +14,7 @@ interface Idata {
   popularСurrencies: object[];
   setPopularСurrencies: ([]) =>void;
   setPortfolioOfCurrencies: ([]) =>[];
-  lineAdjustment:({string}) => string;
+  // lineAdjustment:({string}) => string;
   API_URl:string;
 }
 
