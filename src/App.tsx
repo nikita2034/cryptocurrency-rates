@@ -12,13 +12,13 @@ interface Idata {
   setItem: ({}) => void;
   portfolioOfCurrencies: object[];
   popularСurrencies: object[];
-  setPopularСurrencies: ([]) =>void;
-  setPortfolioOfCurrencies: ([]) =>[];
-  // lineAdjustment:({string}) => string;
+  setPopularСurrencies: (array)=>void;
+  setPortfolioOfCurrencies: (array) =>void;
+  lineAdjustment:(string) => void;
   API_URl:string;
 }
 
-export const ItemContext = createContext<Idata>({});
+export const ItemContext = createContext<Idata|null>(null);
 
 function App() {
   const [item, setItem] = useState<object>({});
