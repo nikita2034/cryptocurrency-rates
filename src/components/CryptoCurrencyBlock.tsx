@@ -15,6 +15,7 @@ function CryptoCurrencyBlock({item,name,price,marketCap,suppl,volumeUsd,changePe
         setItem,
         lineAdjustment,
       } = useContext(ItemContext);
+      console.log(typeof(item));
     return (
         <Container className="block_currency">
       <Row className="block_currency__container">
