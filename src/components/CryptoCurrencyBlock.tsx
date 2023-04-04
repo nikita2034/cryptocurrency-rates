@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -7,17 +7,42 @@ import { ItemContext } from "../App";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { VscDiffAdded } from "react-icons/vsc";
 import { Link } from "react-router-dom";
+type Props = {
+  item: object;
+  name: string;
+  price: string;
+  marketCap: string;
+  suppl: string;
+  volumeUsd: string;
+  changePercent: string;
+  show: boolean;
+  AmountOfCurrency: number;
+  handleShow: () => void;
+  handleClose: () => void;
+  onClickButton: () => void;
+  setAmountOfCurrency: (number) => void;
+};
 
-type Props = {item:object,name:string,price:string,marketCap:string,suppl:string,volumeUsd:string,changePercent:string,show:boolean,AmountOfCurrency:number,handleShow:()=>void,handleClose:()=>void,onClickButton:()=>void,setAmountOfCurrency:(number)=>void}
+function CryptoCurrencyBlock({
+  item,
+  name,
+  price,
+  marketCap,
+  suppl,
+  volumeUsd,
+  changePercent,
+  show,
+  handleShow,
+  handleClose,
+  onClickButton,
+  setAmountOfCurrency,
+  AmountOfCurrency,
+}: Props) {
 
-function CryptoCurrencyBlock({item,name,price,marketCap,suppl,volumeUsd,changePercent,show,handleShow,handleClose,onClickButton,setAmountOfCurrency,AmountOfCurrency}:Props){
+  const {setItem,lineAdjustment} = useContext(ItemContext);
 
-  const {
-        setItem,
-        lineAdjustment
-      } = useContext(ItemContext);
-    return (
-        <Container className="block_currency">
+  return (
+    <Container className="block_currency">
       <Row className="block_currency__container">
         <Link to="/cryptocurrency" onClick={() => setItem(item)}>
           <Col className="block_currency__col">
@@ -86,6 +111,6 @@ function CryptoCurrencyBlock({item,name,price,marketCap,suppl,volumeUsd,changePe
         </div>
       </Modal>
     </Container>
-    )
+  );
 }
-export default CryptoCurrencyBlock
+export default CryptoCurrencyBlock;

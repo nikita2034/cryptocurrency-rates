@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import MainPage from "./pages/MainPage";
@@ -7,9 +7,9 @@ import CryptocurrencyPage from "./pages/CryptocurrencyPage";
 import "./scss/app.scss";
 import { createContext } from "react";
 
-interface Idata {
+ interface Idata {
   item: object;
-  setItem: ({}) => void;
+  setItem: ({}) => {};
   portfolioOfCurrencies: object[];
   popularСurrencies: object[];
   setPopularСurrencies: (popularСurrencies:[])=>void;
@@ -17,13 +17,21 @@ interface Idata {
   lineAdjustment:(str: string) => string | undefined;
   API_URl:string;
 }
-
-export const ItemContext = createContext<Idata|null>(null);
+export const ItemContext = createContext({ 
+  item:{},
+  setItem:({})=>{},
+  portfolioOfCurrencies:[{}],
+  setPortfolioOfCurrencies:([])=>[],
+  popularСurrencies:[{}],
+  setPopularСurrencies:([])=>[],
+  lineAdjustment:(str)=>str,
+  API_URl:'',
+});
 
 function App() {
   const [item, setItem] = useState<object>({});
-  const [portfolioOfCurrencies, setPortfolioOfCurrencies] = useState<object[]>([]);
-  const [popularСurrencies, setPopularСurrencies] = useState<object[]>([]);
+  const [portfolioOfCurrencies, setPortfolioOfCurrencies] = useState<[]>([]);
+  const [popularСurrencies, setPopularСurrencies] = useState<[]>([]);
   const API_URl:string = "https://api.coincap.io/v2/assets";
 
   function lineAdjustment(str: string){

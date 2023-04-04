@@ -26,6 +26,7 @@ function CryptoCurrency({
     lineAdjustment,
   }= useContext(ItemContext);
 
+
   const [AmountOfCurrency, setAmountOfCurrency] = useState<number>(0);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -54,9 +55,9 @@ function CryptoCurrency({
         ...portfolioOfCurrencies,
         { name, price, AmountOfCurrency },
       ]);
-      let data:object[] = JSON.parse(localStorage.getItem("portfolio"));
+      let data = JSON.parse(localStorage.getItem("portfolio"));
       console.log(data);
-      let array:[] = [];
+      let array;
       array = [...data, { name, price, AmountOfCurrency }];
       localStorage.setItem("portfolio", JSON.stringify(array));
     }
