@@ -11,11 +11,11 @@ import { Link } from "react-router-dom";
 type Props = {item:object,name:string,price:string,marketCap:string,suppl:string,volumeUsd:string,changePercent:string,show:boolean,AmountOfCurrency:number,handleShow:()=>void,handleClose:()=>void,onClickButton:()=>void,setAmountOfCurrency:(number)=>void}
 
 function CryptoCurrencyBlock({item,name,price,marketCap,suppl,volumeUsd,changePercent,show,handleShow,handleClose,onClickButton,setAmountOfCurrency,AmountOfCurrency}:Props){
-    const {
+
+  const {
         setItem,
-        lineAdjustment,
+        lineAdjustment
       } = useContext(ItemContext);
-      console.log(typeof(item));
     return (
         <Container className="block_currency">
       <Row className="block_currency__container">

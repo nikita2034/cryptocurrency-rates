@@ -12,9 +12,9 @@ interface Idata {
   setItem: ({}) => void;
   portfolioOfCurrencies: object[];
   popularСurrencies: object[];
-  setPopularСurrencies: (array)=>void;
-  setPortfolioOfCurrencies: (array) =>void;
-  lineAdjustment:(string) => void;
+  setPopularСurrencies: (popularСurrencies:[])=>void;
+  setPortfolioOfCurrencies: (portfolioOfCurrencies:[]) =>void;
+  lineAdjustment:(str: string) => string | undefined;
   API_URl:string;
 }
 
@@ -26,7 +26,7 @@ function App() {
   const [popularСurrencies, setPopularСurrencies] = useState<object[]>([]);
   const API_URl:string = "https://api.coincap.io/v2/assets";
 
-  function lineAdjustment(str: string) {
+  function lineAdjustment(str: string){
     let str1: string;
     let str2: string;
     if (Number(str.length) > 12) {
